@@ -1,0 +1,19 @@
+body {
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-color: #e9eced;
+}
+
+.single-service img {
+    margin: auto;
+    background: linear-gradient(
+        to bottom,
+        #b3dafe00,
+        #acd5fa3c,
+        #9ac5f0b9,
+        #7bacdf
+    );
+    padding: 20px;
+    border-radius: 100%;
+}
