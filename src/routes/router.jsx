@@ -9,7 +9,12 @@ export const router = createBrowserRouter([
         Component: RootLayout,
         children: [
             { index: true, Component: Home },
-            { path: "contact", Component: Contact },
+            {
+                path: "contact",
+                Component: Contact,
+                loader: () =>
+                    fetch("./warehouses.json").then((res) => res.json()),
+            },
         ],
     },
 ]);
