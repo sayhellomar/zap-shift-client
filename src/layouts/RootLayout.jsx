@@ -5,7 +5,9 @@ import Footer from "../pages/shared/footer/Footer";
 export default function RootLayout() {
     return (
         <>
-            <Header />
+            <header className="py-4">
+                <Header />
+            </header>
             <Outlet />
             <Footer />
         </>

@@ -41,8 +41,8 @@ export default function Brands() {
                         className="w-full"
                     >
                         <CarouselContent>
-                            {brands.map((brand) => (
-                                <CarouselItem className="basis-1/5">
+                            {brands.map((brand, index) => (
+                                <CarouselItem key={index} className="basis-1/5">
                                     <img src={brand} />
                                 </CarouselItem>
                             ))}

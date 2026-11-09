@@ -8,6 +8,7 @@ import OurServices from "../our-services/OurServices";
 export default function Home() {
     return (
         <>
+            <title>Home - A parcel delivery application</title>
             <Banner />
             <HowItWorks />
             <OurServices />

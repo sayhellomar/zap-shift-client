@@ -66,15 +66,13 @@ export default function Banner() {
                                                     className="bg-text-twelve text-primary rounded-full w-10 h-10 p-1 rotate-45"
                                                 />
                                             </Link>
-                                            <Button
-                                                render={
-                                                    <Link to="/be-a-rider" />
-                                                }
-                                                className="px-6 py-6 text-xl text-text-six cursor-pointer"
+                                            <Link
+                                                to="be-a-rider"
+                                                className="px-6 py-3 text-xl text-text-six cursor-pointer border-2 rounded-xl font-medium hover:bg-gray-100 hover:text-text-thriteen"
                                                 variant="outline"
                                             >
                                                 Be A Rider
-                                            </Button>
+                                            </Link>
                                         </div>
                                     </div>
                                     <img
@@ -123,15 +121,13 @@ export default function Banner() {
                                                     className="bg-text-twelve text-primary rounded-full w-10 h-10 p-1 rotate-45"
                                                 />
                                             </Link>
-                                            <Button
-                                                render={
-                                                    <Link to="/be-a-rider" />
-                                                }
-                                                className="px-6 py-6 text-xl text-text-six cursor-pointer"
+                                            <Link
+                                                to="be-a-rider"
+                                                className="px-6 py-3 text-xl text-text-six cursor-pointer border-2 rounded-xl font-medium hover:bg-gray-100 hover:text-text-thriteen"
                                                 variant="outline"
                                             >
                                                 Be A Rider
-                                            </Button>
+                                            </Link>
                                         </div>
                                     </div>
                                     <img
@@ -177,15 +173,13 @@ export default function Banner() {
                                                     className="bg-text-twelve text-primary rounded-full w-10 h-10 p-1 rotate-45"
                                                 />
                                             </Link>
-                                            <Button
-                                                render={
-                                                    <Link to="/be-a-rider" />
-                                                }
-                                                className="px-6 py-6 text-xl text-text-six cursor-pointer"
+                                            <Link
+                                                to="be-a-rider"
+                                                className="px-6 py-3 text-xl text-text-six cursor-pointer border-2 rounded-xl font-medium hover:bg-gray-100 hover:text-text-thriteen"
                                                 variant="outline"
                                             >
                                                 Be A Rider
-                                            </Button>
+                                            </Link>
                                         </div>
                                     </div>
                                     <img

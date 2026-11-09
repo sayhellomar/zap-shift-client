@@ -27,7 +27,7 @@ export default function Faq() {
                                 value="item-1"
                                 className="group data-open:border data-open:border-primary-nine data-open:bg-primary-six/15 rounded-xl px-8 py-3 bg-white mb-2"
                             >
-                                <AccordionTrigger className="text-base font-bold group-data-open:text-primary-ten group-data-open:border-b group-data-open:border-b-primary-six/50 hover:no-underline rounded-none pb-3 group-data-open:mb-3">
+                                <AccordionTrigger className="text-base font-bold group-data-open:text-primary-ten group-data-open:border-b group-data-open:border-b-primary-six/50 hover:no-underline rounded-none pb-3 group-data-open:mb-3 cursor-pointer">
                                     How does this posture corrector work?
                                 </AccordionTrigger>
                                 <AccordionContent className="text-text-six">
@@ -44,7 +44,7 @@ export default function Faq() {
                                 value="item-2"
                                 className="group data-open:border data-open:border-primary-nine data-open:bg-primary-six/15 rounded-xl px-8 py-3 bg-white mb-2"
                             >
-                                <AccordionTrigger className="text-base font-bold group-data-open:text-primary-ten group-data-open:border-b group-data-open:border-b-primary-six/50 hover:no-underline rounded-none pb-3 group-data-open:mb-3">
+                                <AccordionTrigger className="text-base font-bold group-data-open:text-primary-ten group-data-open:border-b group-data-open:border-b-primary-six/50 hover:no-underline rounded-none pb-3 group-data-open:mb-3 cursor-pointer">
                                     Is it suitable for all ages and body types?
                                 </AccordionTrigger>
                                 <AccordionContent>
@@ -61,7 +61,7 @@ export default function Faq() {
                                 value="item-3"
                                 className="group data-open:border data-open:border-primary-nine data-open:bg-primary-six/15 rounded-xl px-8 py-3 bg-white"
                             >
-                                <AccordionTrigger className="text-base font-bold group-data-open:text-primary-ten group-data-open:border-b group-data-open:border-b-primary-six/50 hover:no-underline rounded-none pb-3 group-data-open:mb-3">
+                                <AccordionTrigger className="text-base font-bold group-data-open:text-primary-ten group-data-open:border-b group-data-open:border-b-primary-six/50 hover:no-underline rounded-none pb-3 group-data-open:mb-3 cursor-pointer">
                                     Does it really help with back pain and
                                     posture improvement?
                                 </AccordionTrigger>
