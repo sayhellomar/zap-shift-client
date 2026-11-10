@@ -18,8 +18,8 @@ import { ChevronRightIcon } from "lucide-react";
 import { searchByDistrict } from "../../utilities/searchByDistrict";
 
 export default function Contact() {
-    const mapCenter = [23.8103, 90.4125];
     const warehouses = useLoaderData();
+    const mapCenter = [23.8103, 90.4125];
     const mapRef = useRef(null);
     const cardRef = useRef(null);
     const [allWarehouses, setAllWarehouses] = useState(warehouses);

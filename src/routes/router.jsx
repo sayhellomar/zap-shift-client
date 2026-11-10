@@ -6,6 +6,7 @@ import AboutUs from "../pages/about-us/AboutUs";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/auth/login/Login";
 import Register from "../pages/auth/register/Register";
+import ContactPageLoader from "#components/loader/ContactPageLoader";
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
                 Component: Contact,
                 loader: () =>
                     fetch("./warehouses.json").then((res) => res.json()),
-                HydrateFallback: () => <div>Loading...</div>,
+                HydrateFallback: () => <ContactPageLoader />,
             },
         ],
     },

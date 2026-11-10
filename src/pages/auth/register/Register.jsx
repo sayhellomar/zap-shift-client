@@ -9,8 +9,19 @@ import {
 import { Input } from "#components/ui/input";
 import { Link } from "react-router";
 import { FaGoogle } from "react-icons/fa";
+import { useForm } from "react-hook-form";
 
 export default function Register() {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+
+    function onSubmit(data) {
+        console.log(data);
+    }
+
     return (
         <>
             <title>Register - A parcel delivery application</title>
@@ -23,9 +34,9 @@ export default function Register() {
                         Register with ZapShift
                     </p>
                 </div>
-                <form className="max-w-md">
+                <form className="max-w-md" onSubmit={handleSubmit(onSubmit)}>
                     <FieldSet>
-                        <FieldGroup className="gap-2">
+                        <FieldGroup className="gap-4">
                             <Field>
                                 <FieldLabel
                                     htmlFor="name"
@@ -38,6 +49,13 @@ export default function Register() {
                                     type="name"
                                     placeholder="Name"
                                     className="py-5 w-full"
+                                    {...register("name", {
+                                        required:
+                                            "Please enter your name to continue",
+                                    })}
+                                    aria-invalid={
+                                        errors.name ? "true" : "false"
+                                    }
                                 />
                             </Field>
                             <Field>
@@ -52,7 +70,19 @@ export default function Register() {
                                     type="email"
                                     placeholder="Email"
                                     className="py-5"
+                                    {...register("email", {
+                                        required:
+                                            "Please enter your email to continue",
+                                    })}
+                                    aria-invalid={
+                                        errors.email ? "true" : "false"
+                                    }
                                 />
+                                {/* {errors.email && (
+                                    <FieldDescription className="text-red-500 text-sm mt-0">
+                                        {errors.email.message}
+                                    </FieldDescription>
+                                )} */}
                             </Field>
                             <Field>
                                 <FieldLabel
@@ -66,7 +96,23 @@ export default function Register() {
                                     type="password"
                                     placeholder="••••••••"
                                     className="py-5"
+                                    {...register("password", {
+                                        required: true,
+                                        pattern:
+                                            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{6,}$/,
+                                    })}
+                                    aria-invalid={
+                                        errors.password ? "true" : "false"
+                                    }
                                 />
+                                {errors.password && (
+                                    <FieldDescription className="text-red-500 text-sm mt-0">
+                                        Password must be at least 6 characters
+                                        long and include at least one uppercase
+                                        letter, one lowercase letter, and one
+                                        special character.
+                                    </FieldDescription>
+                                )}
                             </Field>
                             <Field>
                                 <FieldLabel
