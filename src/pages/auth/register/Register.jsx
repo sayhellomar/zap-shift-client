@@ -10,6 +10,7 @@ import { Input } from "#components/ui/input";
 import { Link } from "react-router";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
 
 export default function Register() {
     const {
@@ -17,9 +18,13 @@ export default function Register() {
         handleSubmit,
         formState: { errors },
     } = useForm();
+    const { registerUser } = useAuth();
 
     function onSubmit(data) {
-        console.log(data);
+        const { email, password } = data;
+        registerUser(email, password)
+            .then((result) => console.log(result.user))
+            .catch((error) => console.log(error));
     }
 
     return (
@@ -28,7 +33,7 @@ export default function Register() {
             <div className="w-full">
                 <div className="mb-10">
                     <h2 className="text-5xl font-extrabold text-black">
-                        Welcome Back
+                        Register
                     </h2>
                     <p className="text-base text-black mt-1">
                         Register with ZapShift
@@ -127,8 +132,14 @@ export default function Register() {
                                     type="file"
                                 />
                             </Field>
+                            <Button
+                                type="submit"
+                                className="px-6 py-5 text-base text-text-twelve cursor-pointer mt-4"
+                            >
+                                Register
+                            </Button>
                             <Field>
-                                <p className="text-gray-500 text-base mt-2">
+                                <p className="text-gray-500 text-base">
                                     Already have an account?{" "}
                                     <Link
                                         to="/auth/login"
@@ -138,12 +149,6 @@ export default function Register() {
                                     </Link>
                                 </p>
                             </Field>
-                            <Button
-                                type="submit"
-                                className="px-6 py-5 text-base text-text-twelve cursor-pointer mt-4"
-                            >
-                                Register
-                            </Button>
                             <Field>
                                 <p className="text-center text-gray-500 text-base mt-2">
                                     Or

@@ -7,6 +7,8 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/auth/login/Login";
 import Register from "../pages/auth/register/Register";
 import ContactPageLoader from "#components/loader/ContactPageLoader";
+import PrivateRoute from "./PrivateRoute";
+import BeARider from "../pages/be-a-rider/BeARider";
 
 export const router = createBrowserRouter([
     {
@@ -15,6 +17,14 @@ export const router = createBrowserRouter([
         children: [
             { index: true, Component: Home },
             { path: "about-us", Component: AboutUs },
+            {
+                path: "be-a-rider",
+                element: (
+                    <PrivateRoute>
+                        <BeARider />
+                    </PrivateRoute>
+                ),
+            },
             {
                 path: "contact",
                 Component: Contact,

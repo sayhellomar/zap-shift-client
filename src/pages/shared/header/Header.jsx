@@ -5,11 +5,19 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
 } from "#components/ui/navigation-menu";
+import { Skeleton } from "#components/ui/skeleton";
 import { Button } from "#components/ui/button";
 import Logo from "#components/logo/Logo";
 import { ArrowUpIcon } from "lucide-react";
+import useAuth from "../../../hooks/useAuth";
 
 export default function Header() {
+    const { user, logOut, loading } = useAuth();
+
+    function handleLogOut() {
+        logOut();
+    }
+
     return (
         <div className="container mx-auto">
             <div className="flex gap-10 justify-between items-center bg-white py-5 px-8 rounded-xl">
@@ -66,31 +74,47 @@ export default function Header() {
                         </NavigationMenuItem>
                     </NavigationMenuList>
                 </NavigationMenu>
-                <div className="nav-right gap-2 flex">
-                    <Link
-                        to="/auth/login"
-                        className="flex flex-wrap items-center md:flex-row cursor-pointer"
-                    >
-                        <Button
-                            className="px-6 py-6 text-xl text-text-six cursor-pointer"
-                            variant="outline"
+                {loading ? (
+                    <div className="nav-right gap-2 flex">
+                        <Skeleton className="h-12 w-28" />
+                        <Skeleton className="h-12 w-28" />
+                    </div>
+                ) : !user ? (
+                    <div className="nav-right gap-2 flex">
+                        <Link
+                            to="/auth/login"
+                            className="flex flex-wrap items-center md:flex-row cursor-pointer"
                         >
-                            Sign In
+                            <Button
+                                className="px-6 py-6 text-xl text-text-six cursor-pointer"
+                                variant="outline"
+                            >
+                                Sign In
+                            </Button>
+                        </Link>
+                        <Link
+                            to="/be-a-rider"
+                            className="flex flex-wrap items-center md:flex-row cursor-pointer"
+                        >
+                            <Button className="px-6 py-6 text-xl text-text-twelve cursor-pointer">
+                                Be a rider
+                            </Button>
+                            <ArrowUpIcon
+                                size={20}
+                                className="bg-text-twelve text-primary rounded-full w-10 h-10 p-1 rotate-45"
+                            />
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="nav-right gap-2 flex">
+                        <Button
+                            onClick={handleLogOut}
+                            className="px-6 py-6 text-xl text-text-twelve cursor-pointer"
+                        >
+                            Logout
                         </Button>
-                    </Link>
-                    <Link
-                        to="/auth/register"
-                        className="flex flex-wrap items-center md:flex-row cursor-pointer"
-                    >
-                        <Button className="px-6 py-6 text-xl text-text-twelve cursor-pointer">
-                            Sign Up
-                        </Button>
-                        <ArrowUpIcon
-                            size={20}
-                            className="bg-text-twelve text-primary rounded-full w-10 h-10 p-1 rotate-45"
-                        />
-                    </Link>
-                </div>
+                    </div>
+                )}
             </div>
         </div>
     );
