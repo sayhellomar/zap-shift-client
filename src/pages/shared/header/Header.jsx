@@ -10,6 +10,7 @@ import { Button } from "#components/ui/button";
 import Logo from "#components/logo/Logo";
 import { ArrowUpIcon } from "lucide-react";
 import useAuth from "../../../hooks/useAuth";
+import ProfileAvatar from "../../../components/profile-avatar/ProfileAvatar";
 
 export default function Header() {
     const { user, logOut, loading } = useAuth();
@@ -72,6 +73,16 @@ export default function Header() {
                                 Contact
                             </NavigationMenuLink>
                         </NavigationMenuItem>
+                        {user && (
+                            <NavigationMenuItem>
+                                <NavigationMenuLink
+                                    render={<Link to="/be-a-rider" />}
+                                    className="text-md font-light font-urbanist"
+                                >
+                                    Be a rider
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                        )}
                     </NavigationMenuList>
                 </NavigationMenu>
                 {loading ? (
@@ -93,11 +104,11 @@ export default function Header() {
                             </Button>
                         </Link>
                         <Link
-                            to="/be-a-rider"
+                            to="/auth/register"
                             className="flex flex-wrap items-center md:flex-row cursor-pointer"
                         >
                             <Button className="px-6 py-6 text-xl text-text-twelve cursor-pointer">
-                                Be a rider
+                                Sign Up
                             </Button>
                             <ArrowUpIcon
                                 size={20}
@@ -106,7 +117,8 @@ export default function Header() {
                         </Link>
                     </div>
                 ) : (
-                    <div className="nav-right gap-2 flex">
+                    <div className="nav-right gap-4 flex items-center">
+                        <ProfileAvatar />
                         <Button
                             onClick={handleLogOut}
                             className="px-6 py-6 text-xl text-text-twelve cursor-pointer"

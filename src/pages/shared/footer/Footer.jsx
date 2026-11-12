@@ -56,10 +56,10 @@ export default function Footer() {
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuLink
-                                        render={<Link to="/blog" />}
+                                        render={<Link to="/be-a-rider" />}
                                         className="text-md text-text-five font-light font-urbanist hover:bg-image-none"
                                     >
-                                        Blog
+                                        Be a Rider
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>

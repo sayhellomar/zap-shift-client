@@ -7,10 +7,11 @@ import {
     FieldSet,
 } from "#components/ui/field";
 import { Input } from "#components/ui/input";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
+import axios from "axios";
 
 export default function Register() {
     const {
@@ -18,12 +19,37 @@ export default function Register() {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const { registerUser } = useAuth();
+    const { loading, registerUser, updateUserProfile } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
 
     function onSubmit(data) {
-        const { email, password } = data;
+        const { name, email, password, photo } = data;
         registerUser(email, password)
-            .then((result) => console.log(result.user))
+            .then((result) => {
+                const photoImg = photo[0];
+                const formData = new FormData();
+                formData.append("image", photoImg);
+
+                axios
+                    .post(
+                        `https://api.imgbb.com/1/upload?key=${
+                            import.meta.env.VITE_image_upload_key
+                        }`,
+                        formData,
+                    )
+                    .then((response) => {
+                        updateUserProfile({
+                            displayName: name,
+                            photoURL: response.data.data.url,
+                        })
+                            .then(() => {})
+                            .catch((error) => console.log(error));
+                    });
+                navigate(location?.state || "/", {
+                    replace: true,
+                });
+            })
             .catch((error) => console.log(error));
     }
 
@@ -130,6 +156,7 @@ export default function Register() {
                                     className="h-12 pt-3"
                                     id="picture"
                                     type="file"
+                                    {...register("photo")}
                                 />
                             </Field>
                             <Button
@@ -144,6 +171,8 @@ export default function Register() {
                                     <Link
                                         to="/auth/login"
                                         className="text-primary"
+                                        state={location.state}
+                                        replace
                                     >
                                         Login
                                     </Link>
